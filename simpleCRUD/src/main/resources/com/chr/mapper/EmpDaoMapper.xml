@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chr.dao.EmpDao">
+
+    <insert id="insert" parameterType="emp">
+  	insert into p_emp values(#{id},#{name},#{salary},#{age},#{bir});
+  </insert>
+
+    <delete id="delete" parameterType="String">
+  	delete from p_emp where id = #{id};
+  </delete>
+
+    <update id="update" parameterType="emp">
+  	update p_emp set name=#{name},salary=#{salary},age=#{age},bir=#{bir} where id=#{id};
+  </update>
+
+    <select id="selectAll" resultType="emp">
+  	select id,name,salary,age,bir from p_emp;
+  </select>
+
+    <select id="selectOne" parameterType="String" resultType="emp">
+  	select id,name,salary,age,bir from p_emp where id=#{id};
+  </select>
+</mapper>

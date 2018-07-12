@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chr.dao.OrdersMapper">
+  <resultMap id="BaseResultMap" type="com.chr.entity.Orders">
+    <id column="snowid" jdbcType="VARCHAR" property="snowid" />
+    <result column="totalprice" jdbcType="DOUBLE" property="totalprice" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="addrid" jdbcType="VARCHAR" property="addrid" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    snowid, totalprice, createdate, status, addrid, userid, message
+  </sql>
+  <select id="selectByExample" parameterType="com.chr.entity.OrdersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where snowid = #{snowid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from orders
+    where snowid = #{snowid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chr.entity.OrdersExample">
+    delete from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chr.entity.Orders">
+    insert into orders (snowid, totalprice, createdate, 
+      status, addrid, userid, 
+      message)
+    values (#{snowid,jdbcType=VARCHAR}, #{totalprice,jdbcType=DOUBLE}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR}, #{addrid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chr.entity.Orders">
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="snowid != null">
+        snowid,
+      </if>
+      <if test="totalprice != null">
+        totalprice,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="addrid != null">
+        addrid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="snowid != null">
+        #{snowid,jdbcType=VARCHAR},
+      </if>
+      <if test="totalprice != null">
+        #{totalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="addrid != null">
+        #{addrid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chr.entity.OrdersExample" resultType="java.lang.Long">
+    select count(*) from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update orders
+    <set>
+      <if test="record.snowid != null">
+        snowid = #{record.snowid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalprice != null">
+        totalprice = #{record.totalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.createdate != null">
+        createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrid != null">
+        addrid = #{record.addrid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update orders
+    set snowid = #{record.snowid,jdbcType=VARCHAR},
+      totalprice = #{record.totalprice,jdbcType=DOUBLE},
+      createdate = #{record.createdate,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=VARCHAR},
+      addrid = #{record.addrid,jdbcType=VARCHAR},
+      userid = #{record.userid,jdbcType=VARCHAR},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chr.entity.Orders">
+    update orders
+    <set>
+      <if test="totalprice != null">
+        totalprice = #{totalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="addrid != null">
+        addrid = #{addrid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where snowid = #{snowid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chr.entity.Orders">
+    update orders
+    set totalprice = #{totalprice,jdbcType=DOUBLE},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      addrid = #{addrid,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR}
+    where snowid = #{snowid,jdbcType=VARCHAR}
+  </update>
+</mapper>

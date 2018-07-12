@@ -1,0 +1,41 @@
+[{
+	"id":"21",
+	"title":"系统管理",
+	"iconCls":"icon-man",
+	"href":"",
+	"children":[
+		{"id":"211","title":"数据备份","iconCls":"icon-man","href":"/user/index.jsp"},
+		{"id":"212","title":"系统日志","iconCls":"icon-ok","href":"/log/index.jsp"},
+		{"id":"212","title":"系统监听","iconCls":"icon-edit","href":"/log/index.jsp"}
+	]
+},{
+	"id":"22",
+	"title":"学生管理",
+	"iconCls":"icon-search",
+	"href":"",
+	"children":[
+		{"id":"221","title":"学生查看","iconCls":"icon-man","href":"/student/index.jsp"},
+		{"id":"222","title":"学生添加","iconCls":"icon-ok","href":"/student/index.jsp"},
+		{"id":"223","title":"系统删除","iconCls":"icon-edit","href":"/student/index.jsp"}
+	]
+},{
+	"id":"23",
+	"title":"班级管理",
+	"iconCls":"icon-filter",
+	"href":"",
+	"children":[
+		{"id":"221","title":"班级查看","iconCls":"icon-man","href":"/student/index.jsp"}
+	]
+},{
+	"id":"24",
+	"title":"用户管理",
+	"iconCls":"icon-save",
+	"href":"",
+	"children":[]
+},{
+	"id":"25",
+	"title":"数据管理",
+	"iconCls":"icon-add",
+	"href":"",
+	"children":[]
+}]

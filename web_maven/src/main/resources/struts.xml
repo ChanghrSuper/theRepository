@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+
+
+	<package name="emp" extends="struts-default" namespace="/emp">
+		<action name="queryAll" class="com.chr.action.EmpAction" method="queryAll">
+			<result>/list.jsp</result>
+		</action>
+
+	</package>
+	
+	
+</struts>

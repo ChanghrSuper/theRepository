@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chr.dao.EmpDao">
+    
+    <resultMap id="realemp" type="com.chr.entity.Emp">
+        <!--property实体类  column数据库-->
+        <id property="id" column="eid"/>
+        <result property="name" column="ename"/>
+        <result property="salary" column="salary"/>
+        <result property="age" column="age"/>
+        <result property="bir" column="bir"/>
+        <association property="dept" javaType="com.chr.entity.Dept">
+            <id property="id" column="did"/>
+            <result property="name" column="dname"/>
+        </association>
+    </resultMap>
+
+    <insert id="insert" parameterType="emp">
+        insert into ems_emp values(#{id},#{name},#{salary},#{age},#{bir},#{dept.id});
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        delete from ems_emp where id=#{id};
+    </delete>
+
+    <delete id="deleteDept" parameterType="String">
+        delete from ems_emp where did=#{did};
+    </delete>
+
+    <update id="update" parameterType="emp">
+        update ems_emp set name=#{name},salary=#{salary},age=#{age},bir=#{bir},did=#{dept.id}
+               where id=#{id};
+    </update>
+
+    <select id="selectAll" resultMap="realemp">
+        select e.id eid,e.name ename,e.salary,e.age,e.bir,d.id did,d.name dname
+               from ems_emp e left join ems_dept d on e.did=d.id where d.id = #{did} limit ${begin} , ${size};
+    </select>
+
+    <select id="selectOne" parameterType="String" resultMap="realemp">
+        select e.id eid,e.name ename,e.salary,e.age,e.bir,d.id did,d.name dname
+               from ems_emp e left join ems_dept d on e.did=d.id
+               where e.id=#{id};
+    </select>
+    
+    <select id="countNum" parameterType="String" resultType="Integer">
+        select count(e.id) from ems_emp e left join ems_dept d on e.did=d.id where d.id = #{did};
+    </select>
+
+</mapper>

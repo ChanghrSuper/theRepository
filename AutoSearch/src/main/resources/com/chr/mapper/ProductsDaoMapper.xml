@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chr.dao.ProductsDao">
+
+    <insert id="insert" parameterType="products">
+        insert into autosearch_product values(#{id},#{name},#{price},#{description},#{proAddr},#{pinyin});
+    </insert>
+    
+    <delete id="delete" parameterType="String">
+        delete from autosearch_product where id = #{id};
+    </delete>
+    
+    <update id="update" parameterType="products">
+        update autosearch_product set name=#{name},price=#{price},description=#{description},proAddr=#{proAddr},pinyin=#{pinyin} where id=#{id};
+    </update>
+    
+    <select id="select" resultType="products">
+        select id,name,price,description,proAddr,pinyin from autosearch_product where name like '%${name}%' or pinyin like '%${name}%';
+    </select>
+
+    <select id="selectOne" parameterType="String" resultType="products">
+        select id,name,price,description,proAddr,pinyin from autosearch_product where id=#{id};
+    </select>
+
+</mapper>

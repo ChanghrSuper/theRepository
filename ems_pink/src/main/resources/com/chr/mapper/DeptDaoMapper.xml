@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chr.dao.DeptDao">
+
+    <insert id="insert" parameterType="dept">
+        insert into ems_dept values(#{id},#{name});
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        delete from ems_dept where id=#{id};
+    </delete>
+
+    <update id="update" parameterType="dept">
+        update ems_dept set name=#{name} where id=#{id};
+    </update>
+
+    <select id="selectAll" resultType="dept">
+        select id,name from ems_dept;
+    </select>
+
+    <select id="selectOne" parameterType="String" resultType="dept">
+        select id,name from ems_dept where id = #{id};
+    </select>
+
+</mapper>

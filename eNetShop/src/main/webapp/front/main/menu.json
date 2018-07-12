@@ -1,0 +1,42 @@
+[{
+	"id":"21",
+	"title":"用户",
+	"iconCls":"icon-2012080404391",
+	"href":"",
+	"children":[
+		{"id":"211","title":"所有用户","iconCls":"icon-ruby","href":"/back/user/showAll.jsp"},
+		{"id":"212","title":"啥子呦","iconCls":"icon-star","href":"back/logs/index.jsp"},
+		{"id":"212","title":"啥子呦","iconCls":"icon-edit","href":"/log/index.jsp"}
+	]
+},{
+	"id":"22",
+	"title":"商品",
+	"iconCls":"icon-heart",
+	"href":"",
+	"children":[
+		{"id":"221","title":"所有商品","iconCls":"icon-man","href":"/front/product/showAll.jsp"}
+	]
+},{
+	"id":"23",
+	"title":"购物车",
+	"iconCls":"icon-home",
+	"href":"",
+	"children":[
+		{"id":"221","title":"我的购物车","iconCls":"icon-man","href":"/front/shopingcar/showAll.jsp"}
+	]
+},{
+	"id":"24",
+	"title":"订单",
+	"iconCls":"icon-rosette_blue",
+	"href":"",
+	"children":[
+		{"id":"221","title":"轮播图","iconCls":"icon-man","href":"/back/picture/banner.jsp"},
+		{"id":"221","title":"商品图片","iconCls":"icon-man","href":"/student/index.jsp"}
+	]
+},{
+	"id":"25",
+	"title":"不知道什么管理",
+	"iconCls":"icon-rosette",
+	"href":"",
+	"children":[]
+}]

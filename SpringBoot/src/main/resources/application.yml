@@ -1,0 +1,14 @@
+server:
+  port: 8888
+spring:
+  profiles:
+    active: prod
+  datasource:
+    type: org.apache.commons.dbcp.BasicDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/first
+    username: root
+    password: root
+mybatis:
+  mapper-locations: classpath:com/chr/mapper/*
+  type-aliases-package: com.chr.entity
